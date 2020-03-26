@@ -12,33 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloService extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("GETTING");
-        System.out.println(getNameString(null));
         response.getWriter().println(getNameString(null));
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = getNameString(request.getParameter("name"));
+        String name = request.getParameter("name");
         PrintWriter out = response.getWriter();
         out.println(getNameString(name));
-        System.out.println("POSTING");
-        System.out.println(getNameString(name));
     }
 
     public String getNameString(String passedName) {
-        System.out.println(passedName);
-        String strResponse;
-        if (passedName == null) {
+        String strResponse = "";
+        if (passedName == null || passedName == "") {
             strResponse = "Hello World!";
-            System.out.println("NULL");
-            System.out.println(strResponse);
         }else {
-            strResponse = passedName + "!";
-            System.out.println("NOT NULL");
-            System.out.println(strResponse);
+            strResponse = "Hello " + passedName + "!";
         }
-        System.out.println(strResponse);
         return strResponse;
     }
 }

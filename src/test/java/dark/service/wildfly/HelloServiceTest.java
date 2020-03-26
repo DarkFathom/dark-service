@@ -15,22 +15,22 @@ class HelloServiceTest {
 
     @Test
     public void getHelloEric() {
-        assertEquals("Eric!", CUT.getNameString("Eric"));
+        assertEquals("Hello Eric!", CUT.getNameString("Eric"));
     }
 
     @Test
     public void getHelloDan() {
-        assertEquals("Dan!", CUT.getNameString("Dan"));
+        assertEquals("Hello Dan!", CUT.getNameString("Dan"));
     }
 
     @Test
     public void getHelloSteve() {
-        assertEquals("Nathan!", CUT.getNameString("Nathan"));
+        assertEquals("Hello Nathan!", CUT.getNameString("Nathan"));
     }
 
     @Test
     public void getHelloJosh() {
-        assertEquals("Josh!", CUT.getNameString("Josh"));
+        assertEquals("Hello Josh!", CUT.getNameString("Josh"));
     }
 
 }
