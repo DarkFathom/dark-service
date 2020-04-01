@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy to JBOSS') {
             steps {
                 echo 'Deploying to JBOSS'
-                sh 'gradle deploy'
+                sh 'sudo ./deploy.sh'
             }
         }
     }
