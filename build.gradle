@@ -22,12 +22,12 @@ repositories {
 }
 
 dependencies {
+    compile files('libs/ojdbc7.jar')
     providedCompile 'org.wildfly:wildfly-spec-api:16.0.0.Final'
 
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
     testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
 }
-
 test {
     testLogging {
         // standard out or error is shown in Gradle output.

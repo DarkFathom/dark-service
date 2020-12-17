@@ -2,6 +2,7 @@ package com.darkwolf.service.wildfly;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,23 +13,23 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloService extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.getWriter().println(getNameString(null));
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String name = request.getParameter("name");
+        ArrayList<String> users = getNameString();
+        response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println(getNameString(name));
+        out.println("<HTML>");
+        out.println("<HEAD><TITLE>Web Demo</TITLE></HEAD>");
+        out.println("<BODY>");
+        out.println("<P>A hello from all the users.</P>");
+        out.println("<P></P>");
+        for(int i = 0; i < users.size(); i++){
+            out.println("<P>'Hello' - " + users.get(i) + "</P>");
+        }
+        out.println("</BODY></HTML>");
     }
 
-    public String getNameString(String passedName) {
-        String strResponse = "";
-        if (passedName == null || passedName == "") {
-            strResponse = "Hello World!";
-        }else {
-            strResponse = "Hello " + passedName + "!";
-        }
-        return strResponse;
+    public ArrayList<String> getNameString() {
+        DBConnect dbconnect = new DBConnect();
+        ArrayList<String> users = dbconnect.getUsersFromDB();
+        return users;
     }
 }
