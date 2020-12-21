@@ -29,7 +29,8 @@ public class HelloService extends HttpServlet {
 
     public ArrayList<String> getNameString() {
         DBConnect dbconnect = new DBConnect();
-        ArrayList<String> users = dbconnect.getUsersFromDB();
+        dbconnect.setDataFromDB();
+        ArrayList<String> users = dbconnect.getData();
         return users;
     }
 }
