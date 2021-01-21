@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "HelloServlet", urlPatterns = {"hello"}, loadOnStartup = 1)
 public class HelloService extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ArrayList<String> users = getNameString();
         response.setContentType("text/html");
